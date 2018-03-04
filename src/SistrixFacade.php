@@ -1,12 +1,10 @@
 <?php
 
-namespace Fschulze\Sistrix;
+namespace SchulzeFelix\Sistrix;
 
 use Illuminate\Support\Facades\Facade;
 
-/**
- * @see \Spatie\Analytics\Analytics
- */
+
 class SistrixFacade extends Facade
 {
     protected static function getFacadeAccessor()

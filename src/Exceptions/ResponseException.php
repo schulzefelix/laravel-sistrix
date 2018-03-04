@@ -1,6 +1,6 @@
 <?php
 
-namespace Fschulze\Sistrix\Exceptions;
+namespace SchulzeFelix\Sistrix\Exceptions;
 
 use Exception;
 

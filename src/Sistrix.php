@@ -1,9 +1,9 @@
-<?php namespace Fschulze\Sistrix;
+<?php
 
+namespace SchulzeFelix\Sistrix;
 
 use Carbon\Carbon;
-use Fschulze\Sistrix\Exceptions\InvalidrequestParameterKey;
-use Fschulze\Sistrix\Exceptions\ResponseException;
+use SchulzeFelix\Sistrix\Exceptions\ResponseException;
 
 class Sistrix
 {

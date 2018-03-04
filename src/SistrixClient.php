@@ -1,4 +1,6 @@
-<?php namespace Fschulze\Sistrix;
+<?php
+
+namespace SchulzeFelix\Sistrix;
 
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Cache\Repository;

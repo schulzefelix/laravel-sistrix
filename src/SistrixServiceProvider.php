@@ -1,10 +1,8 @@
 <?php
 
-namespace Fschulze\Sistrix;
+namespace SchulzeFelix\Sistrix;
 
-use Fschulze\Sistrix\Exceptions\InvalidConfiguration;
-use GuzzleHttp\Client;
-use Illuminate\Contracts\Cache\Repository;
+use SchulzeFelix\Sistrix\Exceptions\InvalidConfiguration;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
 use Illuminate\Foundation\Application as LaravelApplication;
