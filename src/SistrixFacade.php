@@ -9,6 +9,6 @@ class SistrixFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-sistrix';
+        return 'sistrix';
     }
 }

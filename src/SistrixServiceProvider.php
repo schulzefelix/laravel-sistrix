@@ -16,13 +16,9 @@ class SistrixServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app instanceof LaravelApplication) {
-            $this->publishes([
-                __DIR__.'/config/laravel-sistrix.php' => config_path('laravel-sistrix.php'),
-            ], 'config');
-        } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('laravel-sistrix');
-        }
+        $this->publishes([
+            __DIR__.'/config/sistrix.php' => config_path('sistrix.php'),
+        ]);
     }
 
     /**
@@ -32,9 +28,9 @@ class SistrixServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/laravel-sistrix.php', 'laravel-sistrix');
+        $this->mergeConfigFrom(__DIR__.'/config/sistrix.php', 'sistrix');
 
-        $sistrixConfig = config('laravel-sistrix');
+        $sistrixConfig = config('sistrix');
 
 
         $this->app->bind(SistrixClient::class, function () use ($sistrixConfig) {
@@ -50,6 +46,6 @@ class SistrixServiceProvider extends ServiceProvider
             return new Sistrix($client);
         });
 
-        $this->app->alias(Sistrix::class, 'laravel-sistrix');
+        $this->app->alias(Sistrix::class, 'sistrix');
     }
 }
