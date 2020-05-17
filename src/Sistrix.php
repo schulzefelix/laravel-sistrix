@@ -115,6 +115,10 @@ class Sistrix
 
     public function performQuery($method, $parameters = [])
     {
+        if(is_null($this->date)) {
+            unset($parameters['date']);
+        }
+
         $response = $this->sistrixClient->performQuery(
             $method,
             $parameters
@@ -208,7 +212,7 @@ class Sistrix
     {
         if( is_null($this->date) )
         {
-            return Carbon::now()->toDateString();
+            return null;
         }
 
         return $this->date->toDateString();
