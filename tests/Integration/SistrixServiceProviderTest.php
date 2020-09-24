@@ -1,7 +1,7 @@
-<?php namespace Fschulze\Sistrix\Tests\Integration;
+<?php namespace SchulzeFelix\Sistrix\Tests\Integration;
 
 use Sistrix;
-use Fschulze\Sistrix\Exceptions\InvalidConfiguration;
+use SchulzeFelix\Sistrix\Exceptions\InvalidConfiguration;
 
 class SistrixServiceProviderTest extends TestCase
 {
@@ -11,7 +11,7 @@ class SistrixServiceProviderTest extends TestCase
     {
         $this->app['config']->set('laravel-sistrix.key', '');
 
-        $this->setExpectedException(InvalidConfiguration::class);
+        $this->expectException(InvalidConfiguration::class);
 
         Sistrix::vi();
     }

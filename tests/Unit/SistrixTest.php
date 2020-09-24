@@ -1,20 +1,20 @@
 <?php
 
-namespace Fschulze\Sistrix\Tests\Unit;
+namespace SchulzeFelix\Sistrix\Tests\Unit;
 
 use Carbon\Carbon;
-use Fschulze\Sistrix\Sistrix;
-use Fschulze\Sistrix\SistrixClient;
+use SchulzeFelix\Sistrix\Sistrix;
+use SchulzeFelix\Sistrix\SistrixClient;
 use Illuminate\Support\Collection;
 use Mockery;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class SistrixTest extends PHPUnit_Framework_TestCase
+class SistrixTest extends TestCase
 {
-    /** @var \FSchulze\Sistrix\SistrixClient|\Mockery\Mock */
+    /** @var \SchulzeFelix\Sistrix\SistrixClient|\Mockery\Mock */
     protected $sistrixClient;
 
-    /** @var \FSchulze\Sistrix\Sistrix */
+    /** @var \SchulzeFelix\Sistrix\Sistrix */
     protected $sistrix;
 
     /** @var \Carbon\Carbon */
@@ -30,7 +30,7 @@ class SistrixTest extends PHPUnit_Framework_TestCase
     protected $host;
 
 
-    public function setUp()
+    public function setUp() :void
     {
         $this->sistrixClient = Mockery::mock(SistrixClient::class);
 
@@ -45,7 +45,7 @@ class SistrixTest extends PHPUnit_Framework_TestCase
         $this->secondDate = Carbon::now()->subDays(14);
     }
 
-    public function tearDown()
+    public function tearDown() :void
     {
         Mockery::close();
     }
@@ -299,7 +299,7 @@ class SistrixTest extends PHPUnit_Framework_TestCase
                 ]
             );
 
-        $response = $this->sistrix->domain($this->domain)->kwCountUs();
+        $response = $this->sistrix->domain($this->domain)->date($this->firstDate)->kwCountUs();
 
         $this->assertEquals($this->domain, $response->first()['domain']);
         $this->assertEquals($this->firstDate->toDateString(), $response->first()['date']->format('Y-m-d'));

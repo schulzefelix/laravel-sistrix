@@ -1,14 +1,14 @@
 <?php
 
-namespace Fschulze\Sistrix\Tests\Integration;
+namespace SchulzeFelix\Sistrix\Tests\Integration;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use Fschulze\Sistrix\SistrixFacade;
-use Fschulze\Sistrix\SistrixServiceProvider;
+use SchulzeFelix\Sistrix\SistrixFacade;
+use SchulzeFelix\Sistrix\SistrixServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
-    public function setUp()
+    public function setUp() :void
     {
         parent::setUp();
     }
