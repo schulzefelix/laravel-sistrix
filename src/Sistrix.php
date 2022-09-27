@@ -132,17 +132,18 @@ class Sistrix
             switch ($response['status']):
                 case 'error':
                     throw new ResponseException();
-
                     break;
                 case 'fail':
                     throw new ResponseException();
-
                     break;
                 default:
-                    dd('oops');
             endswitch;
-
         }
+        if(!isset($response['answer']))
+        {
+            throw new ResponseException();
+        }
+
 
         return $response['answer'];
     }
