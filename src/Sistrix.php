@@ -57,8 +57,11 @@ class Sistrix
             'date' => $this->getDate()
         ]);
 
-        $array = $response[0]['sichtbarkeitsindex'][0];
-        $array['date'] = Carbon::parse($array['date']);
+        $array['sichtbarkeitsindex']['domain'] = $response['answer'][0]['sichtbarkeitsindex'][0]['domain'];
+        $array['sichtbarkeitsindex']['date'] = Carbon::parse($response['answer'][0]['sichtbarkeitsindex'][0]['date']);
+        $array['sichtbarkeitsindex']['value'] = $response['answer'][0]['sichtbarkeitsindex'][0]['value'];
+        $array['info'] = $response['info'][0];
+        $array['credits']['used']= $response['credits'][0]['used'];
 
         return $array;
     }
@@ -106,9 +109,6 @@ class Sistrix
         return $kwcounts;
     }
 
-
-
-
     /*
      * General Query
      */
@@ -124,28 +124,18 @@ class Sistrix
             $parameters
         );
 
-
-        if(isset($response['status']))
-        {
-            // TODO: Catch different Types of API Errors
-
-            switch ($response['status']):
-                case 'error':
-                    throw new ResponseException();
-                    break;
-                case 'fail':
-                    throw new ResponseException();
-                    break;
-                default:
-            endswitch;
-        }
         if(!isset($response['answer']))
         {
-            throw new ResponseException();
+            throw new ResponseException($response['error'][0]['error_message'], $response['error'][0]['error_code']);
         }
 
+        switch ($method) {
+            case "domain.sichtbarkeitsindex":
+                return $response;
+            default:
+                return $response['answer'];
+        }
 
-        return $response['answer'];
     }
 
     /*
